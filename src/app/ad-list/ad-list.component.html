@@ -1,0 +1,18 @@
+<table class="table table-borderless  table-hover  table-striped table-dark">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Brand</th>
+        <th scope="col">Model</th>
+        <th scope="col">Class</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = 'let car of carList' (click)='openAd(car.id)'>
+        <td><a><fa-icon [icon]="faCar"></fa-icon></a></td>
+        <td>{{car.carModelDTO.carBrandDTO.name}}</td>
+        <td>{{car.carModelDTO.name}}</td>
+        <td>{{car.carModelDTO.carClassDTO.carClass}}</td>
+      </tr>
+    </tbody>
+  </table>
