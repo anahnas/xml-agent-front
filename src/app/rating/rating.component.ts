@@ -21,14 +21,17 @@ export class RatingComponent implements OnInit {
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
 
+  selectedId:string;
+
   constructor(private formBuilder: FormBuilder, private activeRouter: ActivatedRoute, private ratingService: RatingService) { }
 
   ngOnInit(): void {
     this.comments = [];
  
     this.activeRouter.params.subscribe((params) => {
-      let id = params['id'];
-      this.ratingService.getRatings(id)
+      this.selectedId = params['id'];
+      this.ratingService.getRatings(this.selectedId)
+
       .subscribe( data => {
         for(let rating of data){
           let comment = new Comment();
@@ -48,10 +51,11 @@ export class RatingComponent implements OnInit {
 
   addComments() {
     const formData = this.commentForm.value;
-    /*this.userService.addComments(formData)
+    /*this.ratingService.addComments(formData)
     .subscribe(data => {
       this.comments.push(this.commentForm.value);
     });
-   this.router.navigate(['task-list']);*/
+   this.router.navigate(['ads/'+this.selectedId]);*/
+   
   }
 }
