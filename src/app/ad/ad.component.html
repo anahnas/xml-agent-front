@@ -1,0 +1,93 @@
+
+<section class="wrapper style1">
+    <div class="inner">
+        <!-- 2 Columns -->
+            <div class="flex flex-2">
+                <div class="col col1">
+                    <div class="image round fit">
+                        <a href="generic.html" class="link"><img src="assets/images/aventador.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="col col2">
+                    <h3 style="color: cornflowerblue">Ad details</h3>
+                    
+                    <form method="post" action="#" [formGroup]="adForm">
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <select  formControlName="carBrand">
+                                <option value>-Brand-</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <select formControlName="carModel" >
+                                    <option value>-Model-</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6 col-12-xsmall">
+                                <select formControlName="fuelType">
+                                    <option value>-Fuel type-</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <select formControlName="transmission">
+                                    <option value>-Transmission-</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6 col-12-xsmall">
+                                <select formControlName="carClass">
+                                    <option value>-Car class-</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <select formControlName="carClass">
+                                    <option value>-Pick up place-</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6 col-12-xsmall">
+                                <input type="number" placeholder="Passed kms">
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <input type="number" placeholder="Child seats">
+                            </div>
+                          
+                            <div class="col-6 col-12-small">
+                                <input type="checkbox" id="checkbox-alpha" name="checkbox">
+                                <label for="checkbox-alpha">Unlimited kms</label>
+                            </div>
+                            <div class="col-6 col-12-small">
+                                <input type="checkbox" id="checkbox-beta" name="checkbox" checked="">
+                                <label for="checkbox-beta">Collision Damage Waiver</label>
+                            </div>
+                            <!-- Break -->
+                            <div class="col-12">
+                                <input type="number" rows="6" placeholder="Price per day">
+                            </div>
+                            
+                            <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                            <div class="col-12">
+
+                                <ul class="actions">
+                                    <li><input type="submit" class="primary" value="Car calendar"></li>
+                                    <li><input type="submit" value="Update Ad" class="primary"></li>
+                                    <li><input type="reset" value="Reset"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+            
+                </div>
+            </div>
+    </div>
+
+</section>
+
+<section>
+    <div >
+        <h3 style="text-align:center">Ad ratings</h3>
+        <app-rating></app-rating>
+    </div>
+</section>

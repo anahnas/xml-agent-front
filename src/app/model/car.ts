@@ -3,10 +3,12 @@ import {CarModel} from './carModel';
 import {CarBrand} from './carBrand';
 import {FuelType} from './fuelType';
 import {Transmission} from './transmission';
+import {TransmissionType} from './transmissionType';
 
 export class Car {
 
-  id: number;
+  // id: number;
+  id: string;
   kmage: number;
   availableChildSeats: number;
   limitKmsPerDay: number;
@@ -19,6 +21,9 @@ export class Car {
   transmission: Transmission;
   waiver: boolean;
   limitedKms: boolean;
+  carModelDTO: CarModel;
+  fuelTypeDTO: FuelType;
+  transmissionDTO: TransmissionType;
 
 
 
@@ -26,3 +31,4 @@ export class Car {
   }
 
 }
+

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { faCar } from '@fortawesome/free-solid-svg-icons';
+import { faCar, faList, faAd } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   title = 'agent-front-xml';
 
   faCar = faCar;
-
+  faAd = faAd;
+  faList = faList;
 
 
   constructor(private router: Router) {
