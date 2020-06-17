@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HomePageComponent} from './home-page/home-page.component';
 import { NewAdComponent} from './new-ad/new-ad.component';
+import {NewAdService} from './new-ad/new-ad.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NewAdComponent} from './new-ad/new-ad.component';
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [NewAdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

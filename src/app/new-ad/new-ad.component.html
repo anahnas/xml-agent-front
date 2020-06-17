@@ -2,7 +2,7 @@
   <div class="note">
     <h3 style="color: cornflowerblue">Create new advertisement</h3>
   </div>
-  <form>
+  <form (ngSubmit)="onSubmit()">
 
     <div class="card my-5">
       <div class="card-body">
@@ -11,33 +11,27 @@
         <div class="ml-1">
           <select class="custom-select">
             <option disabled selected value> Select.. </option>
-            <option>
-              Audi
+            <option *ngFor="let brand of carBrands">
+              {{brand.name}}
             </option>
-            <option>
-              Nissan
-            </option>
+
           </select>
         </div>
         <label>Model</label>
         <div class="ml-1">
           <select class="custom-select">
-            <option>
-              A7
-            </option>
-            <option>
-              Versa
+            <option disabled selected value> Select.. </option>
+            <option *ngFor="let model of carModels">
+              {{model.name}}
             </option>
           </select>
         </div>
         <label>Class</label>
         <div class="ml-1">
-          <select>
-            <option>
-              ClassA
-            </option>
-            <option>
-              ClassB
+          <select class="custom-select">
+            <option disabled selected value> Select.. </option>
+            <option *ngFor="let class of carClasses">
+              {{class.carClass}}
             </option>
           </select>
         </div>
