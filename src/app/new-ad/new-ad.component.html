@@ -8,8 +8,9 @@
       <div class="card-body">
 
         <h5 style="color: cornflowerblue">Details</h5>
+        <!--Car brand and class already exist in car model-->
 
-        <label>Brand</label>
+      <!--  <label>Brand</label>
         <div class="ml-1">
           <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carBrand">
             <option disabled selected value> Select.. </option>
@@ -18,7 +19,17 @@
             </option>
 
           </select>
-        </div>
+          <label>Class</label>
+          <div class="ml-1">
+            <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carClass">
+              <option disabled selected value> Select.. </option>
+              <option *ngFor="let class of carClasses" [ngValue]="class">
+                {{class.carClass}}
+              </option>
+            </select>
+          </div>
+
+        </div>-->
         <label>Model</label>
         <div class="ml-1">
           <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carModel">
@@ -27,15 +38,6 @@
               {{model.name}}
             </option>
 
-          </select>
-        </div>
-        <label>Class</label>
-        <div class="ml-1">
-          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carClass">
-            <option disabled selected value> Select.. </option>
-            <option *ngFor="let class of carClasses" [ngValue]="class">
-              {{class.carClass}}
-            </option>
           </select>
         </div>
 

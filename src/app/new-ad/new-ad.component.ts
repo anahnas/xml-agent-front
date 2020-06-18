@@ -33,7 +33,7 @@ export class NewAdComponent implements OnInit {
 
   constructor(private newAdService: NewAdService, private router: Router) {
     this.advertisement.car = new Car();
-    this.advertisement.car.carBrand = new CarBrand();
+   //  this.advertisement.car.carBrand = new CarBrand();
     this.advertisement.car.carModel = new CarModel();
     this.advertisement.car.waiver = false;
     this.advertisement.car.limitedKms = false;
