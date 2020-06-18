@@ -10,75 +10,85 @@
                 </div>
                 <div class="col col2">
                     <h3 style="color: cornflowerblue">Ad details</h3>
-                    
-                    <form method="post" action="#" [formGroup]="adForm">
+
+                    <form method="post" action="#" [formGroup]="adForm" (ngSubmit)='updateAd()'>
                         <div class="row gtr-uniform">
                             <div class="col-6 col-12-xsmall">
-                                <select  formControlName="carBrand">
-                                <option value>-Brand-</option>
+                              <label style="color: cornflowerblue">Car brand</label>
+                              <select formControlName="carBrand">
+                                <option *ngFor="let carBrand of carBrands" [selected]="carBrand.name == car.carModelDTO.carBrandDTO.name">{{carBrand.name}}</option>
                                 </select>
                             </div>
                             <div class="col-6 col-12-xsmall">
-                                <select formControlName="carModel" >
-                                    <option value>-Model-</option>
-                                </select>
-                            </div>
-
-                            <div class="col-6 col-12-xsmall">
-                                <select formControlName="fuelType">
-                                    <option value>-Fuel type-</option>
-                                </select>
-                            </div>
-                            <div class="col-6 col-12-xsmall">
-                                <select formControlName="transmission">
-                                    <option value>-Transmission-</option>
+                              <label style="color: cornflowerblue">Car model</label>
+                              <select formControlName="carModel" >
+                                  <option *ngFor="let carModel of carModels" [selected]="carModel.name == car.carModelDTO.name">{{carModel.name}}</option>
                                 </select>
                             </div>
 
                             <div class="col-6 col-12-xsmall">
-                                <select formControlName="carClass">
-                                    <option value>-Car class-</option>
+                              <label style="color: cornflowerblue">Fuel type</label>
+                              <select formControlName="fuelType">
+                                  <option *ngFor="let fuelType of fuelTypes" [selected]="fuelType.type == car.fuelTypeDTO.type">{{fuelType.type}}</option>
                                 </select>
                             </div>
+
                             <div class="col-6 col-12-xsmall">
-                                <select formControlName="carClass">
+                              <label style="color: cornflowerblue">Transmission type</label>
+                              <select formControlName="transmission">
+                                  <option *ngFor="let transmission of transmissionTypes" [selected]="transmission.type == car.transmissionDTO.type">{{transmission.type}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6 col-12-xsmall">
+                              <label style="color: cornflowerblue">Car class</label>
+                              <select formControlName="carClass">
+                                  <option *ngFor="let carClass of carClasses" [selected]="carClass.carClass == car.carModelDTO.carClassDTO.carClass">{{carClass.carClass}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6 col-12-xsmall">
+                              <label style="color: cornflowerblue">Pickup place</label>
+                              <select >
                                     <option value>-Pick up place-</option>
                                 </select>
                             </div>
 
                             <div class="col-6 col-12-xsmall">
-                                <input type="number" placeholder="Passed kms">
+                              <label style="color: cornflowerblue">Passed kms</label>
+                              <input type="number" placeholder="Passed kms" formControlName="kmage">
                             </div>
                             <div class="col-6 col-12-xsmall">
-                                <input type="number" placeholder="Child seats">
+                              <label  style="color: cornflowerblue">Available childs seats</label>
+                              <input type="number" placeholder="Child seats" formControlName="childSeats">
                             </div>
-                          
+
                             <div class="col-6 col-12-small">
-                                <input type="checkbox" id="checkbox-alpha" name="checkbox">
-                                <label for="checkbox-alpha">Unlimited kms</label>
+                                <input type="checkbox" id="checkbox-alpha" name="checkbox" formControlName="limitedKms">
+                                <label for="checkbox-alpha">Limited kms</label>
                             </div>
                             <div class="col-6 col-12-small">
-                                <input type="checkbox" id="checkbox-beta" name="checkbox" checked="">
+                                <input type="checkbox" id="checkbox-beta" name="checkbox" formControlName="waiver">
                                 <label for="checkbox-beta">Collision Damage Waiver</label>
                             </div>
                             <!-- Break -->
                             <div class="col-12">
                                 <input type="number" rows="6" placeholder="Price per day">
                             </div>
-                            
+
                             <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
 
                             <div class="col-12">
 
                                 <ul class="actions">
-                                    <li><input type="submit" class="primary" value="Car calendar"></li>
-                                    <li><input type="submit" value="Update Ad" class="primary"></li>
+                                    <li><button class="primary" >Car calendar</button></li>
+                                    <li><input type="submit" value="Update Ad"></li>
                                     <li><input type="reset" value="Reset"></li>
                                 </ul>
                             </div>
                         </div>
                     </form>
-            
+
                 </div>
             </div>
     </div>
