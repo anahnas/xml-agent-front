@@ -18,6 +18,7 @@ import { RatingService } from './rating/rating.service';
 import { AdListComponent } from './ad-list/ad-list.component';
 import { CarService } from './car.service';
 import {NewAdService} from './new-ad/new-ad.service';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {NewAdService} from './new-ad/new-ad.service';
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    RatingModule
+    RatingModule,
+    NgbDatepickerModule
   ],
   providers: [NewAdService, CarService, RatingService
   ],

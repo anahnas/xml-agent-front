@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { faCar, faList, faAd } from '@fortawesome/free-solid-svg-icons';
+import { faCar, faList, faAd, faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
