@@ -6,12 +6,14 @@
 
     <div class="card my-5">
       <div class="card-body">
+
         <h5 style="color: cornflowerblue">Details</h5>
+
         <label>Brand</label>
         <div class="ml-1">
-          <select class="custom-select">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carBrand">
             <option disabled selected value> Select.. </option>
-            <option *ngFor="let brand of carBrands">
+            <option *ngFor="let brand of carBrands" [ngValue]="brand">
               {{brand.name}}
             </option>
 
@@ -19,9 +21,9 @@
         </div>
         <label>Model</label>
         <div class="ml-1">
-          <select class="custom-select">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carModel">
             <option disabled selected value> Select.. </option>
-            <option *ngFor="let model of carModels">
+            <option *ngFor="let model of carModels" [ngValue]="model">
               {{model.name}}
             </option>
 
@@ -29,18 +31,97 @@
         </div>
         <label>Class</label>
         <div class="ml-1">
-          <select class="custom-select">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carClass">
             <option disabled selected value> Select.. </option>
-            <option *ngFor="let class of carClasses">
+            <option *ngFor="let class of carClasses" [ngValue]="class">
               {{class.carClass}}
             </option>
           </select>
         </div>
 
+        <label>Fuel Type</label>
+        <div class="ml-1">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.fuelType">
+            <option disabled selected value> Select.. </option>
+            <option *ngFor="let types of fuelTypes" [ngValue]="types">
+              {{types.type}}
+            </option>
+          </select>
+        </div>
+
+        <label>Transmission</label>
+        <div class="ml-1">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.transmission">
+            <option disabled selected value> Select.. </option>
+            <option *ngFor="let types of transmissions" [ngValue]="types">
+              {{types.type}}
+            </option>
+          </select>
+        </div>
+
+
       </div>
     </div>
 
+    <div>
+        <label for="waiver">Waiver</label>
+        <div class="form-group ml-5 mr-5 m-1">
+          <input type="checkbox" id="waiver" class="form-control"
+                 [(ngModel)]="advertisement.car.waiver"
+                 name="waiver" [ngModelOptions]="{standalone:true}">
+        </div>
+    </div>
+    <div>
+      <label for="waiver">Limited Kms</label>
+      <div class="form-group ml-5 mr-5 m-1">
+        <input type="checkbox" id="limitedKms" class="form-control"
+               [(ngModel)]="advertisement.car.limitedKms"
+               name="limitedKms" [ngModelOptions]="{standalone:true}">
+      </div>
+    </div>
+    <div>
+      <label for="childSeats">Available child seats : </label>
+      <input id="childSeats" class="form-control"
+             placeholder="Available child seats" [(ngModel)]="advertisement.car.availableChildSeats"
+             name="childSeats" [ngModelOptions]="{standalone:true}">
+    </div>
+    <div>
+      <label for="kilometresLimit">Kilometres limit per day</label>
+      <input type="number" class="form-control" id="kilometresLimit" min="0" oninput="validity.valid||(value='');"
+             [(ngModel)]="advertisement.car.limitKmsPerDay"
+             name="kilometresLimit" [ngModelOptions]="{standalone:true}">
 
+    </div>
+
+    <div class="form-group">
+      <label for="pricePerDay">Price per day</label>
+      <input type="number" class="form-control" id="pricePerDay" min="0" oninput="validity.valid||(value='');"
+             [(ngModel)]="advertisement.car.pricePerDay"
+             name="pricePerDay" [ngModelOptions]="{standalone:true}">
+    </div>
+
+    <div class="form-group">
+      <label for="pricePerKm">Price per km</label>
+      <input type="number" class="form-control" id="pricePerKm" min="0" oninput="validity.valid||(value='');"
+             [(ngModel)]="advertisement.car.pricePerKm"
+             name="pricePerKm" [ngModelOptions]="{standalone:true}">
+    </div>
+    <div class="form-group">
+      <label for="kmage">Kmage</label>
+      <input type="number" class="form-control" id="kmage" min="0" oninput="validity.valid||(value='');"
+             [(ngModel)]="advertisement.car.kmage"
+             name="kmage" [ngModelOptions]="{standalone:true}">
+
+    </div>
+
+    <div class="form-group">
+      Rent car for period: <br/>
+      From :
+      <input type = "date" [(ngModel)]="advertisement.startDate" placeholder = "Start Date" [ngModelOptions]="{standalone:true}">
+      To :
+      <input type = "date" [(ngModel)]="advertisement.endDate" placeholder = "End Date" [ngModelOptions]="{standalone:true}">
+
+    </div>
     <button type="submit" class="btn btn-success">Submit</button>
 
   </form>
