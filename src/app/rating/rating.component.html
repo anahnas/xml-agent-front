@@ -11,9 +11,9 @@
                             <a href="#"><b>{{comment.author}}</b></a>
                             made a post.
                         </div>
-                        <div class="card"> 
+                        <div class="card">
                             <p>{{comment.description}}</p>
-                            
+
                         </div>
                         <h6 class="text-muted time">1 minute ago</h6>
                         <div class="stats">
@@ -25,21 +25,21 @@
                             </a>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
-        
+
         <div class="col-sm-8">
             <div class="panel panel-white post panel-shadow" >
-                <!--<div class="post-heading"> 
+                <!--<div class="post-heading">
                     <div class="pull-left meta">
                         <div class="title h4">
                             <a href="#"><b>{{task.title}}</b></a>
                         </div>
                         <h6 class="text-muted time">1 minute ago</h6>
                     </div>
-                </div> 
-                <div class="post-description"> 
+                </div>
+                <div class="post-description">
                     <p>{{task.description}}</p>
                     <div class="stats">
                         <a href="#" class="btn btn-default stat-item">
@@ -61,10 +61,13 @@
                         <textarea placeholder="Your comement..." class="form-control task-textarea" rows="1" formControlName="description" id="description" ></textarea>
                       </div>
                     </div>
-                    <button class="btn btn-default btn-submit">Submit</button>
+
+                  <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+
+                  <button class="btn btn-default btn-submit">Submit</button>
                   </form>
             </div>
         </div>
-        
+
     </div>
 </div>
