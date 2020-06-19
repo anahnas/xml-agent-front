@@ -32,7 +32,7 @@
         </div>-->
         <label>Model</label>
         <div class="ml-1">
-          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.carModel">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.carDTO.carModel">
             <option disabled selected value> Select.. </option>
             <option *ngFor="let model of carModels" [ngValue]="model">
               {{model.name}}
@@ -43,7 +43,7 @@
 
         <label>Fuel Type</label>
         <div class="ml-1">
-          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.fuelType">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.carDTO.fuelType">
             <option disabled selected value> Select.. </option>
             <option *ngFor="let types of fuelTypes" [ngValue]="types">
               {{types.type}}
@@ -53,7 +53,7 @@
 
         <label>Transmission</label>
         <div class="ml-1">
-          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.car.transmission">
+          <select class="custom-select" [ngModelOptions]="{standalone: true}" [(ngModel)]="advertisement.carDTO.transmission">
             <option disabled selected value> Select.. </option>
             <option *ngFor="let types of transmissions" [ngValue]="types">
               {{types.type}}
@@ -69,7 +69,7 @@
         <label for="waiver">Waiver</label>
         <div class="form-group ml-5 mr-5 m-1">
           <input type="checkbox" id="waiver" class="form-control"
-                 [(ngModel)]="advertisement.car.waiver"
+                 [(ngModel)]="advertisement.carDTO.waiver"
                  name="waiver" [ngModelOptions]="{standalone:true}">
         </div>
     </div>
@@ -77,20 +77,20 @@
       <label for="waiver">Limited Kms</label>
       <div class="form-group ml-5 mr-5 m-1">
         <input type="checkbox" id="limitedKms" class="form-control"
-               [(ngModel)]="advertisement.car.limitedKms"
+               [(ngModel)]="advertisement.carDTO.limitedKms"
                name="limitedKms" [ngModelOptions]="{standalone:true}">
       </div>
     </div>
     <div>
       <label for="childSeats">Available child seats : </label>
       <input id="childSeats" class="form-control"
-             placeholder="Available child seats" [(ngModel)]="advertisement.car.availableChildSeats"
+             placeholder="Available child seats" [(ngModel)]="advertisement.carDTO.availableChildSeats"
              name="childSeats" [ngModelOptions]="{standalone:true}">
     </div>
     <div>
       <label for="kilometresLimit">Kilometres limit per day</label>
       <input type="number" class="form-control" id="kilometresLimit" min="0" oninput="validity.valid||(value='');"
-             [(ngModel)]="advertisement.car.limitKmsPerDay"
+             [(ngModel)]="advertisement.carDTO.limitKmsPerDay"
              name="kilometresLimit" [ngModelOptions]="{standalone:true}">
 
     </div>
@@ -98,22 +98,28 @@
     <div class="form-group">
       <label for="pricePerDay">Price per day</label>
       <input type="number" class="form-control" id="pricePerDay" min="0" oninput="validity.valid||(value='');"
-             [(ngModel)]="advertisement.car.pricePerDay"
+             [(ngModel)]="advertisement.carDTO.pricePerDay"
              name="pricePerDay" [ngModelOptions]="{standalone:true}">
     </div>
 
     <div class="form-group">
       <label for="pricePerKm">Price per km</label>
       <input type="number" class="form-control" id="pricePerKm" min="0" oninput="validity.valid||(value='');"
-             [(ngModel)]="advertisement.car.pricePerKm"
+             [(ngModel)]="advertisement.carDTO.pricePerKm"
              name="pricePerKm" [ngModelOptions]="{standalone:true}">
     </div>
     <div class="form-group">
       <label for="kmage">Kmage</label>
       <input type="number" class="form-control" id="kmage" min="0" oninput="validity.valid||(value='');"
-             [(ngModel)]="advertisement.car.kmage"
+             [(ngModel)]="advertisement.carDTO.kmage"
              name="kmage" [ngModelOptions]="{standalone:true}">
 
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" class="form-control" accept="image/*" id="image" (change) = 'onFileSelected($event)'>
+      <img [src]="imageUrl | safeHtml"  height="200"> <br/>
     </div>
 
     <div class="form-group">

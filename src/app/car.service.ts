@@ -5,11 +5,11 @@ import {  catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Car } from './model/car';
 import {CarBrand} from './model/carBrand';
-import {CarModel} from "./model/carModel";
-import {CarClass} from "./model/carClass";
-import {TransmissionType} from "./model/transmissionType";
-import {FuelType} from "./model/fuelType";
-import {Rating} from "./model/rating";
+import {CarModel} from './model/carModel';
+import {CarClass} from './model/carClass';
+import {TransmissionType} from './model/transmissionType';
+import {FuelType} from './model/fuelType';
+import {Rating} from './model/rating';
 
 @Injectable()
 export class CarService {
@@ -58,11 +58,16 @@ export class CarService {
                     catchError(this.handleError));
     }
 
-    updateCar(car :Car): Observable<Car> {
+    updateCar(car: Car): Observable<Car> {
       return this._http.post<Car>(this._adUrl, car).pipe(
         catchError(this.handleError));
     }
 
+    getImage(id: string): Observable<File> {
+      // @ts-ignore
+      return this._http.get<File>('http://localhost:8086/car/' + id + '/image', { responseType: 'blob' }).pipe(
+        catchError(this.handleError));
+    }
     private handleError(err: HttpErrorResponse) {
         console.log(err.message);
         return throwError(err.message);

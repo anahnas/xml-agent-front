@@ -12,6 +12,7 @@ import {faCalendar} from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 import {DatePipe} from '@angular/common';
 import {NgbDatepickerConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-new-ad',
@@ -31,16 +32,17 @@ export class NewAdComponent implements OnInit {
   transmissions: Transmission[] = [];
   faCalendar = faCalendar;
 
+  selectedFile: File  = null;
+  imageUrl: string;
+
   constructor(private newAdService: NewAdService, private router: Router) {
-    this.advertisement.car = new Car();
+    this.advertisement.carDTO = new Car();
    //  this.advertisement.car.carBrand = new CarBrand();
-    this.advertisement.car.carModel = new CarModel();
-    this.advertisement.car.waiver = false;
-    this.advertisement.car.limitedKms = false;
+    this.advertisement.carDTO.carModelDTO = new CarModel();
+    this.advertisement.carDTO.waiver = false;
+    this.advertisement.carDTO.limitedKms = false;
 
   }
-
-
 
   ngOnInit(): void {
     this.newAdService.getCarBrands().subscribe(data => {
@@ -61,12 +63,35 @@ export class NewAdComponent implements OnInit {
 
   }
 
+  onFileSelected(event) {
+    console.log(event);
+    this.selectedFile = event.target.files[0] as File;
+    this.imageUrl = URL.createObjectURL(event.target.files[0]);
+  }
+
+  uploadImage(id: string) {
+    const fd = new FormData();
+    alert(id)
+    fd.append('image', this.selectedFile,   id + '-' + this.selectedFile.name);
+
+    this.newAdService.uploadImage(fd).subscribe(event => {
+      console.log(event);
+    });
+  }
+
   onSubmit() {
     console.log(this.advertisement);
-    this.newAdService.createAdvertisement(this.advertisement).subscribe(result => {
+
+    this.newAdService.createAdvertisement(this.advertisement).subscribe(car => {
+      if (this.imageUrl !== '') {
+        console.log(car);
+        this.uploadImage(car.id);
+      } else {
+        alert('No image uploaded.');
+        return;
+      }
       alert('Success!');
       this.router.navigate(['/newAd']);
-
     });
 
   }

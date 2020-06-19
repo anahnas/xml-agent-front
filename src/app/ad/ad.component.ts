@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { StarRatingComponent } from 'ng-starrating';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Comment} from '../model/comment';
 import {CarService} from '../car.service';
 import {Car} from '../model/car';
 import {CarBrand} from '../model/carBrand';
-import {CarModel} from "../model/carModel";
-import {CarClass} from "../model/carClass";
-import {FuelType} from "../model/fuelType";
-import {TransmissionType} from "../model/transmissionType";
+import {CarModel} from '../model/carModel';
+import {CarClass} from '../model/carClass';
+import {FuelType} from '../model/fuelType';
+import {TransmissionType} from '../model/transmissionType';
 
 @Component({
   selector: 'app-ad',
@@ -21,6 +20,8 @@ export class AdComponent implements OnInit {
   selectedId: string;
   currentRate = 8;
   adForm: FormGroup;
+
+  imageUrl: string;
 
   car: Car = new Car();
   carBrands: CarBrand[] = [];
@@ -69,6 +70,11 @@ export class AdComponent implements OnInit {
             .subscribe(transmissionTypes => {
               this.transmissionTypes = transmissionTypes;
             });
+          this.carService.getImage(this.selectedId)
+            .subscribe(image => {
+              this.imageUrl = URL.createObjectURL(image);
+            });
+
           this.adForm.setValue({
             carBrand: this.car.carModelDTO.carBrandDTO.name,
             carModel: this.car.carModelDTO.name,
