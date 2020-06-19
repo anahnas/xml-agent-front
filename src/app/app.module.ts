@@ -19,6 +19,7 @@ import { AdListComponent } from './ad-list/ad-list.component';
 import { CarService } from './car.service';
 import {NewAdService} from './new-ad/new-ad.service';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {SafeHtml} from './new-ad/safeHtml.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
     NewAdComponent,
     AdComponent,
     RatingComponent,
-    AdListComponent
+    AdListComponent,
+    SafeHtml
   ],
   imports: [
     BrowserModule,

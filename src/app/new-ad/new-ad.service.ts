@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CarBrand} from '../model/carBrand';
 import {CarModel} from '../model/carModel';
@@ -8,6 +8,7 @@ import {CarClass} from '../model/carClass';
 import {FuelType} from '../model/fuelType';
 import {Transmission} from '../model/transmission';
 import {Advertisement} from '../model/advertisement';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +34,16 @@ export class NewAdService {
     return this.httpClient.get<Transmission[]>('http://localhost:8086/transmission');
   }
 
-  createAdvertisement(advertisement: Advertisement) {
+  uploadImage(fd: FormData) {
+    return this.httpClient.post('http://localhost:8086/advertisement/image', fd, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
 
-    return this.httpClient.post('http://localhost:8086/advertisement', advertisement);
+  createAdvertisement(advertisement: Advertisement): Observable<Car>{
+
+    return this.httpClient.post<Car>('http://localhost:8086/advertisement', advertisement);
 
   }
 
