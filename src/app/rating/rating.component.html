@@ -11,11 +11,13 @@
                             <a href="#"><b>{{comment.author}}</b></a>
                             made a post.
                         </div>
-                        <div class="card">
-                            <p>{{comment.description}}</p>
+                      <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
 
+                      <div class="card">
+                            <p>{{comment.description}}</p>
                         </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
+
+                      <h6 class="text-muted time">1 minute ago</h6>
                         <div class="stats">
                             <a href="#">
                                 <fa-icon [icon]="faThumbsUp"></fa-icon>2
@@ -58,11 +60,14 @@
                         <input type="text" placeholder="Author" class="form-control" formControlName="author" id="author" />
                       </div>
                       <div class="form-group">
-                        <textarea placeholder="Your comement..." class="form-control task-textarea" rows="1" formControlName="description" id="description" ></textarea>
+                        <textarea placeholder="Your comment..." class="form-control task-textarea" rows="1" formControlName="description" id="description" ></textarea>
                       </div>
-                    </div>
+                      <div class="form-group card">
+                        <label style="color: cornflowerblue;">Rate this car</label>
+                        <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                      </div>
 
-                  <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                    </div>
 
                   <button class="btn btn-default btn-submit">Submit</button>
                   </form>

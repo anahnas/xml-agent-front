@@ -1,0 +1,25 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9">
+      <div class="row">
+      <h2 style="margin-top: 30px">Messages</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered" >
+            <tbody>
+              <tr *ngFor="let message of messages">
+                <td class="action"><input type="checkbox" /></td>
+                <td class="action"><i class="fa fa-star-o"></i></td>
+                <td class="action"><i class="fa fa-bookmark-o"></i></td>
+                <td class="name"><a href="messages/{{message.id}}">{{message.sender}}</a></td>
+                <td class="subject"><a href="messages/{{message.id}}">{{message.content}}</a></td>
+                <td class="time">{{message.timeSent}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

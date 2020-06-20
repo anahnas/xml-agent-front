@@ -1,0 +1,32 @@
+
+<div id="frame">
+  <div class="content">
+    <div class="contact-profile">
+      <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+      <p>{{sender}}</p>
+
+    </div>
+    <div class="messages">
+      <ul>
+        <div  *ngFor="let message of messages">
+          <li [ngClass]="(message.flag=='sent')?'sent':'replies'">
+            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
+            <p>{{message.content}}<br><p class = "date">{{message.timeSent}}</p>
+            </p>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+    <div class="message-input">
+      <div class="wrap">
+        <input type="text" id="text" (keyup)="onKey($event)" placeholder="Write your message..." />
+        <button class="submit" (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
