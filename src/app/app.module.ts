@@ -14,12 +14,15 @@ import { NewAdComponent} from './new-ad/new-ad.component';
 import { AdComponent } from './ad/ad.component';
 import { RatingModule } from 'ng-starrating';
 import { RatingComponent } from './rating/rating.component';
-import { RatingService } from './rating/rating.service';
+import { RatingService } from './service/rating.service';
 import { AdListComponent } from './ad-list/ad-list.component';
-import { CarService } from './car.service';
+import { CarService } from './service/car.service';
 import {NewAdService} from './new-ad/new-ad.service';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {SafeHtml} from './new-ad/safeHtml.pipe';
+import { MessagesComponent } from './messages/messages.component';
+import {MessageService} from './service/message.service';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import {SafeHtml} from './new-ad/safeHtml.pipe';
     AdComponent,
     RatingComponent,
     AdListComponent,
-    SafeHtml
+    SafeHtml,
+    MessagesComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +50,7 @@ import {SafeHtml} from './new-ad/safeHtml.pipe';
     RatingModule,
     NgbDatepickerModule
   ],
-  providers: [NewAdService, CarService, RatingService
-  ],
+  providers: [NewAdService, CarService, RatingService, MessageService],
 
   bootstrap: [AppComponent]
 })

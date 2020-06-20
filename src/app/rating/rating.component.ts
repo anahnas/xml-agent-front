@@ -3,7 +3,7 @@ import { Task } from '../model/task';
 import { Comment } from '../model/comment';
 import { faCar, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { RatingService } from './rating.service';
+import { RatingService } from '../service/rating.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Rating} from '../model/rating';
 import { StarRatingComponent } from 'ng-starrating';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { StarRatingComponent } from 'ng-starrating';
 import {ActivatedRoute, Router} from '@angular/router';
-import {CarService} from '../car.service';
+import {CarService} from '../service/car.service';
 import {Car} from '../model/car';
 import {CarBrand} from '../model/carBrand';
 import {CarModel} from '../model/carModel';
