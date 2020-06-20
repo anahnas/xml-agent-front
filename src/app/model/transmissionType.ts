@@ -1,4 +1,4 @@
 export class TransmissionType {
-  id:String
-  type:String
+  id: string;
+  type: string;
 }

@@ -13,6 +13,7 @@ import * as moment from 'moment';
 import {DatePipe} from '@angular/common';
 import {NgbDatepickerConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpEventType} from '@angular/common/http';
+import {TransmissionType} from "../model/transmissionType";
 
 @Component({
   selector: 'app-new-ad',
@@ -23,8 +24,6 @@ import {HttpEventType} from '@angular/common/http';
 export class NewAdComponent implements OnInit {
 
   advertisement: Advertisement = new Advertisement();
-  selectedBrand: CarBrand;
-  selectedModel: CarModel;
   carModels: CarModel[] = [];
   carBrands: CarBrand[] = [];
   carClasses: CarClass[] = [];
@@ -37,8 +36,9 @@ export class NewAdComponent implements OnInit {
 
   constructor(private newAdService: NewAdService, private router: Router) {
     this.advertisement.carDTO = new Car();
-   //  this.advertisement.car.carBrand = new CarBrand();
     this.advertisement.carDTO.carModelDTO = new CarModel();
+    this.advertisement.carDTO.fuelTypeDTO = new FuelType();
+    this.advertisement.carDTO.transmissionDTO = new TransmissionType();
     this.advertisement.carDTO.waiver = false;
     this.advertisement.carDTO.limitedKms = false;
 
@@ -71,7 +71,6 @@ export class NewAdComponent implements OnInit {
 
   uploadImage(id: string) {
     const fd = new FormData();
-    alert(id)
     fd.append('image', this.selectedFile,   id + '-' + this.selectedFile.name);
 
     this.newAdService.uploadImage(fd).subscribe(event => {
@@ -81,10 +80,9 @@ export class NewAdComponent implements OnInit {
 
   onSubmit() {
     console.log(this.advertisement);
-
-    this.newAdService.createAdvertisement(this.advertisement).subscribe(car => {
+    // user posting is always agent because of no logging in
+    this.newAdService.createAdvertisement(this.advertisement, '1').subscribe(car => {
       if (this.imageUrl !== '') {
-        console.log(car);
         this.uploadImage(car.id);
       } else {
         alert('No image uploaded.');

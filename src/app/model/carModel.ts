@@ -9,6 +9,4 @@ export class CarModel {
 
   constructor() {
   }
-
-
 }

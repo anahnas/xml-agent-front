@@ -41,10 +41,9 @@ export class NewAdService {
     });
   }
 
-  createAdvertisement(advertisement: Advertisement): Observable<Car>{
-
-    return this.httpClient.post<Car>('http://localhost:8086/advertisement', advertisement);
-
+  createAdvertisement(advertisement: Advertisement, userId: string): Observable<Car> {
+    return this.httpClient.post<Car>('http://localhost:8086/advertisement', advertisement,
+      {headers: {userId}});
   }
 
 }
