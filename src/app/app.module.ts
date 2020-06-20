@@ -20,6 +20,12 @@ import { CarService } from './car.service';
 import {NewAdService} from './new-ad/new-ad.service';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { ToastrModule } from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DatePipe } from '@angular/common'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +47,13 @@ import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FontAwesomeModule,
     RatingModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    //ToastrModule.forRoot(),
+    AngularFontAwesomeModule
   ],
-  providers: [NewAdService, CarService, RatingService
+  providers: [NewAdService, CarService, RatingService, DatePipe
   ],
 
   bootstrap: [AppComponent]

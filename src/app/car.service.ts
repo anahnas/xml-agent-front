@@ -10,11 +10,12 @@ import {CarClass} from "./model/carClass";
 import {TransmissionType} from "./model/transmissionType";
 import {FuelType} from "./model/fuelType";
 import {Rating} from "./model/rating";
+import { Rental } from './model/rental';
 
 @Injectable()
 export class CarService {
 
-    private _adUrl = 'http://localhost:8086/car';
+  private _adUrl = 'http://localhost:8086/car';
   private _getCarBrandsUrl = 'http://localhost:8086/carBrand';
   private _getCarModelsUrl = 'http://localhost:8086/carModel';
   private _getCarClassesUrl = 'http://localhost:8086/carClass';
@@ -53,13 +54,28 @@ export class CarService {
         catchError(this.handleError));
     }
 
+    getCarCalendarId(carId: string): Observable<string> {
+      return this._http.get<string>(this._adUrl + '/' + carId +'/carCalendar').pipe(
+        catchError(this.handleError));
+    }
+
     getAd(carId: string): Observable<Car> {
         return this._http.get<Car>(this._adUrl + '/' + carId).pipe(
-                    catchError(this.handleError));
+        catchError(this.handleError));
     }
 
     updateCar(car :Car): Observable<Car> {
       return this._http.post<Car>(this._adUrl, car).pipe(
+        catchError(this.handleError));
+    }
+
+    getRentals(carid: string): Observable<Rental[]> {
+      return this._http.get<Rental[]>(this._adUrl + '/' + carid + '/rentals').pipe(
+        catchError(this.handleError));
+    } 
+
+    addRental(rental: Rental): Observable<any> {
+      return this._http.post<any>(this._adUrl + '/notAvailable', rental) .pipe( 
         catchError(this.handleError));
     }
 

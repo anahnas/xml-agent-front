@@ -9,7 +9,12 @@ import {CarBrand} from '../model/carBrand';
 import {CarModel} from "../model/carModel";
 import {CarClass} from "../model/carClass";
 import {FuelType} from "../model/fuelType";
+import {Rental} from "../model/rental";
 import {TransmissionType} from "../model/transmissionType";
+import {NgbModal, ModalDismissReasons, NgbModalOptions, NgbDropdownToggle, NgbDropdownMenu,
+  NgbDropdown, NgbDropdownItem} from '@ng-bootstrap/ng-bootstrap';
+import { from } from 'rxjs';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-ad',
@@ -21,15 +26,25 @@ export class AdComponent implements OnInit {
   selectedId: string;
   currentRate = 8;
   adForm: FormGroup;
+  rentals: Rental[] = [];
+  rental: Rental = new Rental();
+  rentalsNew: Rental[] = [];   
+  startDate: Date;
+  endDate: Date;
 
+  closeResult: string;
   car: Car = new Car();
   carBrands: CarBrand[] = [];
   carModels: CarModel[] = [];
   carClasses: CarClass[] = [];
   fuelTypes: FuelType[] = [];
   transmissionTypes: TransmissionType[] = [];
+  carCalendarId: string;
 
-  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute, private router: Router, private carService: CarService) { }
+  constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute,
+              private router: Router, private modalService: NgbModal, 
+              private carService: CarService, public datepipe: DatePipe) { 
+              }
 
   ngOnInit() {
     this.adForm = this.formBuilder.group({
@@ -69,6 +84,12 @@ export class AdComponent implements OnInit {
             .subscribe(transmissionTypes => {
               this.transmissionTypes = transmissionTypes;
             });
+          this.carService.getCarCalendarId(this.selectedId)
+            .subscribe(carCalendarId => {
+              this.carCalendarId = carCalendarId;
+            });     
+
+
           this.adForm.setValue({
             carBrand: this.car.carModelDTO.carBrandDTO.name,
             carModel: this.car.carModelDTO.name,
@@ -86,6 +107,56 @@ export class AdComponent implements OnInit {
 
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}) {
     alert('Only users can change the rating.');
+  }
+  
+  blockReservation(content) {
+ 
+    console.log(this.selectedId);    
+      
+    this.carService.getRentals(this.selectedId)
+      .subscribe((rentals => {
+          this.rentals = rentals;
+
+          for(let r of this.rentals) {    
+            r.startDateString = this.datepipe.transform(r.startDate, 'yyyy-MM-dd');
+            r.endDateString =this.datepipe.transform(r.endDate, 'yyyy-MM-dd');
+            this.rentalsNew.push(r);
+      
+          }
+
+        })
+    );
+    
+    
+    this.modalService.open(content, {size: 'xl', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  addRequest(startDate, endDate) {
+    this.rental.startDate = this.startDate;
+    this.rental.endDate = this.endDate;
+    this.rental.carCalendarId = this.carCalendarId; 
+    this.carService.addRental(this.rental)
+      .subscribe( (response:any) => {
+        console.log(response)
+        alert("You've made a reservation.");
+        window.location.reload();
+      }, error => {
+        alert("Error while making a reservation.");
+      });
   }
 
   updateAd() {

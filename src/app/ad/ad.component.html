@@ -81,10 +81,11 @@
                             <div class="col-12">
 
                                 <ul class="actions">
-                                    <li><button class="primary" >Car calendar</button></li>
+                                    <li><button type="button" id="blockReserve" (click) = "blockReservation(reserveCar)" >Block or reserve</button></li>
                                     <li><input type="submit" value="Update Ad"></li>
                                     <li><input type="reset" value="Reset"></li>
                                 </ul>
+                           
                             </div>
                         </div>
                     </form>
@@ -95,9 +96,113 @@
 
 </section>
 
+<ng-template #reserveCar let-modal>
+    <div class="modal-header" >
+      <h3 class="modal-title"  style="color: cornflowerblue" id="modal-basic-title3">Reserve or block car</h3>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body"  class="col-15 col-12-xsmall">
+      <form>
+        <div class="row">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                <th>
+                  Id
+                </th>
+                <th>
+                  Start date
+                </th>
+                <th>
+                  End date
+                </th>
+                <th>
+
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+                
+                <th class="text-right">
+  
+                </th>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let rental of rentals">
+                  <tr>
+                    <td>{{rental.id}}</td>
+                    <td>{{rental.startDateString}}</td>
+                    <td>{{rental.endDateString}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                  </tr>
+                </ng-container>
+                </tbody>
+              </table>    
+              </div>
+          </div>
+          
+
+          <div class="col-md-4 pr-5">
+            <h4 class=" text-primary" style="color: rgb(0, 1, 3)"> Make rent request: </h4>
+            <div class="form-group">
+              <p class=" text-primary" style="color: rgb(0, 1, 3)"> Start date:</p>  
+              <div class="input-group">
+                <input  type="date" [(ngModel)]="startDate"
+                       class="form-control"
+                       id="myDate1"
+                       name="myDate1"
+                       value="yyyy-mm-dd"
+                       required #name="ngModel">
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class=" text-primary" style="color: rgb(0, 1, 3)"> End date:</p>  
+              <div class="input-group">
+                <input  type="date" [(ngModel)]="endDate"
+                       class="form-control"
+                       id="myDate2"
+                       name="myDate2"
+                       value="yyyy-mm-dd"
+                       required #name="ngModel">
+
+              </div>
+            </div>
+            <div>
+              <p></p>
+            </div>
+
+            <div class="form-group">
+              <button  class="btn btn-primary btn-block" id="reserve" (click)="addRequest(startDate, endDate)">Add request</button>
+            </div>                                                                            
+
+          </div>
+
+        </div>  
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </ng-template>
+
+
+  
 <section>
     <div >
         <h3 style="text-align:center">Ad ratings</h3>
         <app-rating></app-rating>
     </div>
 </section>
+
