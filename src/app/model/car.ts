@@ -15,9 +15,6 @@ export class Car {
   limitKmsPerDay: number;
   pricePerDay: number;
   pricePerKm: number;
-  carModel: CarModel;
-  fuelType: FuelType;
-  transmission: Transmission;
   waiver: boolean;
   limitedKms: boolean;
 }
