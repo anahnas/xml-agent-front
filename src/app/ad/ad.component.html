@@ -5,7 +5,9 @@
             <div class="flex flex-2">
                 <div class="col col1">
                     <div class="image round fit">
-                        <a href="generic.html" class="link"><img  [src]="imageUrl | safeHtml" alt="No images to show."></a>
+                        <a href="generic.html" class="link">
+                          <img  [src]="imageUrl | safeHtml"
+                          onerror="this.src = 'assets/aventador.jpg'"></a>
                     </div>
                 </div>
                 <div class="col col2">
@@ -76,7 +78,7 @@
                                 <input type="number" rows="6" placeholder="Price per day">
                             </div>
 
-                            <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                            <star-rating [value]=currentRate totalstars="10" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
 
                             <div class="col-12">
 
@@ -85,7 +87,7 @@
                                     <li><input type="submit" value="Update Ad"></li>
                                     <li><input type="reset" value="Reset"></li>
                                 </ul>
-                           
+
                             </div>
                         </div>
                     </form>
@@ -128,9 +130,9 @@
                 </th>
                 <th>
                 </th>
-                
+
                 <th class="text-right">
-  
+
                 </th>
                 </thead>
                 <tbody>
@@ -142,19 +144,19 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    
+
                   </tr>
                 </ng-container>
                 </tbody>
-              </table>    
+              </table>
               </div>
           </div>
-          
+
 
           <div class="col-md-4 pr-5">
             <h4 class=" text-primary" style="color: rgb(0, 1, 3)"> Make rent request: </h4>
             <div class="form-group">
-              <p class=" text-primary" style="color: rgb(0, 1, 3)"> Start date:</p>  
+              <p class=" text-primary" style="color: rgb(0, 1, 3)"> Start date:</p>
               <div class="input-group">
                 <input  type="date" [(ngModel)]="startDate"
                        class="form-control"
@@ -167,7 +169,7 @@
             </div>
 
             <div class="form-group">
-              <p class=" text-primary" style="color: rgb(0, 1, 3)"> End date:</p>  
+              <p class=" text-primary" style="color: rgb(0, 1, 3)"> End date:</p>
               <div class="input-group">
                 <input  type="date" [(ngModel)]="endDate"
                        class="form-control"
@@ -184,11 +186,11 @@
 
             <div class="form-group">
               <button  class="btn btn-primary btn-block" id="reserve" (click)="addRequest(startDate, endDate)">Add request</button>
-            </div>                                                                            
+            </div>
 
           </div>
 
-        </div>  
+        </div>
       </form>
     </div>
 
@@ -198,7 +200,7 @@
   </ng-template>
 
 
-  
+
 <section>
     <div >
         <h3 style="text-align:center">Ad ratings</h3>

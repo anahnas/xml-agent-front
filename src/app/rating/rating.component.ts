@@ -41,6 +41,7 @@ export class RatingComponent implements OnInit {
           const comment = new Comment();
           comment.author = rating.userDTO.username;
           comment.description = rating.comment;
+          comment.stars = rating.rating;
           this.comments.push(comment);
         }
       });
@@ -70,6 +71,7 @@ export class RatingComponent implements OnInit {
           return;
         });
       this.router.navigate(['ads/' + this.selectedId]);
+      window.location.reload();
     });
 
   }
