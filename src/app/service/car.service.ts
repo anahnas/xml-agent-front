@@ -9,7 +9,6 @@ import {CarModel} from "./model/carModel";
 import {CarClass} from "./model/carClass";
 import {TransmissionType} from "./model/transmissionType";
 import {FuelType} from "./model/fuelType";
-import {Rating} from "./model/rating";
 import { Rental } from './model/rental';
 
 @Injectable()
@@ -55,7 +54,7 @@ export class CarService {
     }
 
     getCarCalendarId(carId: string): Observable<string> {
-      return this._http.get<string>(this._adUrl + '/' + carId +'/carCalendar').pipe(
+      return this._http.get<string>(this._adUrl + '/' + carId + '/carCalendar').pipe(
         catchError(this.handleError));
     }
 
@@ -74,13 +73,13 @@ export class CarService {
       return this._http.get<File>('http://localhost:8086/car/' + id + '/image', { responseType: 'blob' }).pipe(
         catchError(this.handleError));
     }
-    getRentals(carid: string): Observable<Rental[]> {
-      return this._http.get<Rental[]>(this._adUrl + '/' + carid + '/rentals').pipe(
+    getRentals(carId: string): Observable<Rental[]> {
+      return this._http.get<Rental[]>(this._adUrl + '/' + carId + '/rentals').pipe(
         catchError(this.handleError));
-    } 
+    }
 
     addRental(rental: Rental): Observable<any> {
-      return this._http.post<any>(this._adUrl + '/notAvailable', rental) .pipe( 
+      return this._http.post<any>(this._adUrl + '/notAvailable', rental) .pipe(
         catchError(this.handleError));
     }
 

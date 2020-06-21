@@ -11,7 +11,7 @@
                             <a href="#"><b>{{comment.author}}</b></a>
                             made a post.
                         </div>
-                      <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                      <star-rating [value]=comment.stars totalstars="10" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
 
                       <div class="card">
                             <p>{{comment.description}}</p>
@@ -64,7 +64,7 @@
                       </div>
                       <div class="form-group card">
                         <label style="color: cornflowerblue;">Rate this car</label>
-                        <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                        <star-rating [value]=this.rating.rating totalstars="10" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
                       </div>
 
                     </div>

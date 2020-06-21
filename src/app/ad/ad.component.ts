@@ -14,6 +14,7 @@ import {NgbModal, ModalDismissReasons, NgbModalOptions, NgbDropdownToggle, NgbDr
   NgbDropdown, NgbDropdownItem} from '@ng-bootstrap/ng-bootstrap';
 import { from } from 'rxjs';
 import { DatePipe } from '@angular/common'
+import {RatingService} from "../service/rating.service";
 
 @Component({
   selector: 'app-ad',
@@ -23,11 +24,11 @@ import { DatePipe } from '@angular/common'
 export class AdComponent implements OnInit {
 
   selectedId: string;
-  currentRate = 8;
+  currentRate = 0.0;
   adForm: FormGroup;
   rentals: Rental[] = [];
   rental: Rental = new Rental();
-  rentalsNew: Rental[] = [];   
+  rentalsNew: Rental[] = [];
   startDate: Date;
   endDate: Date;
 
@@ -43,9 +44,9 @@ export class AdComponent implements OnInit {
   carCalendarId: string;
 
   constructor(private formBuilder: FormBuilder, private activeRoute: ActivatedRoute,
-              private router: Router, private modalService: NgbModal, 
-              private carService: CarService, public datepipe: DatePipe) { 
-              }
+              private router: Router, private modalService: NgbModal,
+              private carService: CarService,  private ratingService: RatingService,
+              public datepipe: DatePipe) {}
 
   ngOnInit() {
     this.adForm = this.formBuilder.group({
@@ -88,12 +89,19 @@ export class AdComponent implements OnInit {
           this.carService.getImage(this.selectedId)
             .subscribe(image => {
               this.imageUrl = URL.createObjectURL(image);
+              console.log(this.imageUrl)
+            }, error => {
+              this.imageUrl = 'src/assets/images/aventador.jpg';
             });
           this.carService.getCarCalendarId(this.selectedId)
             .subscribe(carCalendarId => {
               this.carCalendarId = carCalendarId;
-            });     
+            });
 
+          this.ratingService.getRate(this.selectedId)
+            .subscribe( response => {
+              this.currentRate = response;
+            });
 
           this.adForm.setValue({
             carBrand: this.car.carModelDTO.carBrandDTO.name,
@@ -113,26 +121,26 @@ export class AdComponent implements OnInit {
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}) {
     alert('Only users can change the rating.');
   }
-  
+
   blockReservation(content) {
- 
-    console.log(this.selectedId);    
-      
+
+    console.log(this.selectedId);
+
     this.carService.getRentals(this.selectedId)
       .subscribe((rentals => {
           this.rentals = rentals;
 
-          for(let r of this.rentals) {    
+          for(let r of this.rentals) {
             r.startDateString = this.datepipe.transform(r.startDate, 'yyyy-MM-dd');
             r.endDateString =this.datepipe.transform(r.endDate, 'yyyy-MM-dd');
             this.rentalsNew.push(r);
-      
+
           }
 
         })
     );
-    
-    
+
+
     this.modalService.open(content, {size: 'xl', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -153,7 +161,7 @@ export class AdComponent implements OnInit {
   addRequest(startDate, endDate) {
     this.rental.startDate = this.startDate;
     this.rental.endDate = this.endDate;
-    this.rental.carCalendarId = this.carCalendarId; 
+    this.rental.carCalendarId = this.carCalendarId;
     this.carService.addRental(this.rental)
       .subscribe( (response:any) => {
         console.log(response)

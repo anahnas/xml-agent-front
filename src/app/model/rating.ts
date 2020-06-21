@@ -1,5 +1,5 @@
 import { User } from './user';
-import {Car} from "./car";
+import {Car} from './car';
 
 export class Rating {
     id: String;

@@ -18,12 +18,16 @@ export class RatingService {
                     catchError(this.handleError));
     }
 
-  postRating(carId: string, rating: Rating): Observable<Rating[]> {
-    return this._http.post<Rating[]>(this._ratingUrl, rating,
-      {headers: {carId}}).pipe(
-      catchError(this.handleError));
-  }
+    postRating(carId: string, rating: Rating): Observable<Rating[]> {
+      return this._http.post<Rating[]>(this._ratingUrl, rating,
+        {headers: {carId}}).pipe(
+        catchError(this.handleError));
+    }
 
+    getRate(carId: string): Observable<any> {
+      return this._http.get<any>(this._ratingUrl + '/rate', {headers: {carId}}).pipe(
+        catchError(this.handleError));
+    }
     private handleError(err: HttpErrorResponse) {
         console.log(err.message);
         return throwError(err.message);
