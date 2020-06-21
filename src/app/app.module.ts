@@ -24,6 +24,12 @@ import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './service/message.service';
 import { MessageComponent } from './message/message.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { ToastrModule } from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DatePipe } from '@angular/common'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +54,13 @@ import { MessageComponent } from './message/message.component';
     HttpClientModule,
     FontAwesomeModule,
     RatingModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    //ToastrModule.forRoot(),
+    AngularFontAwesomeModule
   ],
-  providers: [NewAdService, CarService, RatingService, MessageService],
+  providers: [NewAdService, CarService, RatingService, DatePipe, MessageService],
 
   bootstrap: [AppComponent]
 })
