@@ -27,6 +27,12 @@ import {StatisticsComponent} from './statistics/statistics.component';
 import {jqxChartModule} from 'jqwidgets-ng/jqxchart';
 import {StatisticsService} from './statistics/statistics.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { ToastrModule } from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DatePipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +59,13 @@ import {StatisticsService} from './statistics/statistics.service';
     FontAwesomeModule,
     RatingModule,
     NgbDatepickerModule,
-    jqxChartModule
+    jqxChartModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    //ToastrModule.forRoot(),
+    AngularFontAwesomeModule
   ],
-  providers: [NewAdService, CarService, RatingService, MessageService, StatisticsService],
+  providers: [NewAdService, CarService, RatingService, DatePipe, MessageService,  StatisticsService],
 
   bootstrap: [AppComponent]
 })
