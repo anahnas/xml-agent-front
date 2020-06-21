@@ -23,6 +23,9 @@ import {SafeHtml} from './new-ad/safeHtml.pipe';
 import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './service/message.service';
 import { MessageComponent } from './message/message.component';
+import {StatisticsComponent} from './statistics/statistics.component';
+import {jqxChartModule} from 'jqwidgets-ng/jqxchart';
+import {StatisticsService} from './statistics/statistics.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { MessageComponent } from './message/message.component';
     AdListComponent,
     SafeHtml,
     MessagesComponent,
-    MessageComponent
+    MessageComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +52,10 @@ import { MessageComponent } from './message/message.component';
     HttpClientModule,
     FontAwesomeModule,
     RatingModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    jqxChartModule
   ],
-  providers: [NewAdService, CarService, RatingService, MessageService],
+  providers: [NewAdService, CarService, RatingService, MessageService, StatisticsService],
 
   bootstrap: [AppComponent]
 })

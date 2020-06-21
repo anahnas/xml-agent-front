@@ -13,7 +13,7 @@ import * as moment from 'moment';
 import {DatePipe} from '@angular/common';
 import {NgbDatepickerConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpEventType} from '@angular/common/http';
-import {TransmissionType} from "../model/transmissionType";
+import {TransmissionType} from '../model/transmissionType';
 
 @Component({
   selector: 'app-new-ad',
