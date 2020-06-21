@@ -23,12 +23,15 @@ import {SafeHtml} from './new-ad/safeHtml.pipe';
 import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './service/message.service';
 import { MessageComponent } from './message/message.component';
+import {StatisticsComponent} from './statistics/statistics.component';
+import {jqxChartModule} from 'jqwidgets-ng/jqxchart';
+import {StatisticsService} from './statistics/statistics.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ToastrModule } from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { DatePipe } from '@angular/common'
     AdListComponent,
     SafeHtml,
     MessagesComponent,
-    MessageComponent
+    MessageComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,12 +59,13 @@ import { DatePipe } from '@angular/common'
     FontAwesomeModule,
     RatingModule,
     NgbDatepickerModule,
+    jqxChartModule,
     BrowserAnimationsModule,
     NgbModule,
     //ToastrModule.forRoot(),
     AngularFontAwesomeModule
   ],
-  providers: [NewAdService, CarService, RatingService, DatePipe, MessageService],
+  providers: [NewAdService, CarService, RatingService, DatePipe, MessageService,  StatisticsService],
 
   bootstrap: [AppComponent]
 })

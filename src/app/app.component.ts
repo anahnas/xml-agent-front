@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {faCar, faList, faAd, faCalendar, faAddressCard, faClipboard} from '@fortawesome/free-solid-svg-icons';
+import {faCar, faList, faAd, faCalendar, faAddressCard, faClipboard, faBook} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   faCar = faCar;
   faMessages = faClipboard;
   faList = faList;
+  faBook = faBook;
 
 
   constructor(private router: Router) {

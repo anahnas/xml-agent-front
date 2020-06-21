@@ -1,0 +1,46 @@
+<div class="statistics">
+  <h1>Statistics</h1>
+  <br>
+  <div style="width: 33%; display:inline-block">
+    <div class="statistic">
+      <jqxChart #myChart
+                [height]="500"
+                [title]="'Cars with the most driven kms:'"
+                [description]="''"
+                [showLegend]="true"
+                [enableAnimations]="true"
+                [padding]="padding"
+                [titlePadding]="titlePadding"
+                [source]="carsForStatistics"
+                [xAxis]="xAxis1"
+                [seriesGroups]="seriesGroups1"
+                [colorScheme]="'scheme02'">
+      </jqxChart>
+
+    </div>
+  </div>
+
+  <div style="width: 33%; display:inline-block">
+    <div class="statistic">
+      <jqxChart #myChart
+                [height]="500"
+                [title]="'Most commented cars:'"
+                [description]="''"
+                [showLegend]="true"
+                [enableAnimations]="true"
+                [padding]="padding"
+                [titlePadding]="titlePadding"
+                [source]="dataAdapter2"
+                [xAxis]="xAxis2"
+                [seriesGroups]="seriesGroups2"
+                [colorScheme]="'scheme01'">
+      </jqxChart>
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
