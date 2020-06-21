@@ -3,14 +3,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {  catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { Car } from './model/car';
-import {CarBrand} from './model/carBrand';
-import {CarModel} from "./model/carModel";
-import {CarClass} from "./model/carClass";
-import {TransmissionType} from "./model/transmissionType";
-import {FuelType} from "./model/fuelType";
-import {Rating} from "./model/rating";
-import { Rental } from './model/rental';
+import { Car} from '../model/car';
+import {CarBrand} from '../model/carBrand';
+import {CarModel} from '../model/carModel';
+import {CarClass} from '../model/carClass';
+import {TransmissionType} from '../model/transmissionType';
+import {FuelType} from '../model/fuelType';
+import {Rating} from '../model/rating';
+import { Rental } from '../model/rental';
 
 @Injectable()
 export class CarService {
@@ -55,7 +55,7 @@ export class CarService {
     }
 
     getCarCalendarId(carId: string): Observable<string> {
-      return this._http.get<string>(this._adUrl + '/' + carId +'/carCalendar').pipe(
+      return this._http.get<string>(this._adUrl + '/' + carId + '/carCalendar').pipe(
         catchError(this.handleError));
     }
 
@@ -77,10 +77,10 @@ export class CarService {
     getRentals(carid: string): Observable<Rental[]> {
       return this._http.get<Rental[]>(this._adUrl + '/' + carid + '/rentals').pipe(
         catchError(this.handleError));
-    } 
+    }
 
     addRental(rental: Rental): Observable<any> {
-      return this._http.post<any>(this._adUrl + '/notAvailable', rental) .pipe( 
+      return this._http.post<any>(this._adUrl + '/notAvailable', rental) .pipe(
         catchError(this.handleError));
     }
 
