@@ -83,7 +83,7 @@ export class NewAdComponent implements OnInit {
     // user posting is always agent because of no logging in
     this.newAdService.createAdvertisement(this.advertisement, '1').subscribe(car => {
       if (this.imageUrl !== '') {
-        this.uploadImage(car.id);
+        this.uploadImage(car);
       } else {
         alert('No image uploaded.');
         return;

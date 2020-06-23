@@ -3,13 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {  catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { Car } from './model/car';
-import {CarBrand} from './model/carBrand';
-import {CarModel} from "./model/carModel";
-import {CarClass} from "./model/carClass";
-import {TransmissionType} from "./model/transmissionType";
-import {FuelType} from "./model/fuelType";
-import { Rental } from './model/rental';
+import { Car } from '../model/car';
+import {CarBrand} from '../model/carBrand';
+import {CarModel} from '../model/carModel';
+import {CarClass} from '../model/carClass';
+import {TransmissionType} from '../model/transmissionType';
+import {FuelType} from '../model/fuelType';
+import { Rental } from '../model/rental';
 
 @Injectable()
 export class CarService {
