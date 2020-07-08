@@ -91,7 +91,7 @@ export class AdComponent implements OnInit {
               this.imageUrl = URL.createObjectURL(image);
               console.log(this.imageUrl)
             }, error => {
-              this.imageUrl = 'src/assets/images/aventador.jpg';
+              this.imageUrl = '/assets/images/aventador.jpg';
             });
           this.carService.getCarCalendarId(this.selectedId)
             .subscribe(carCalendarId => {

@@ -8,7 +8,7 @@ import {CarClass} from '../model/carClass';
 import {FuelType} from '../model/fuelType';
 import {Transmission} from '../model/transmission';
 import {Advertisement} from '../model/advertisement';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +41,8 @@ export class NewAdService {
     });
   }
 
-  createAdvertisement(advertisement: Advertisement, userId: string): Observable<Car> {
-    return this.httpClient.post<Car>('http://localhost:8086/advertisement', advertisement,
+  createAdvertisement(advertisement: Advertisement, userId: string): Observable<string> {
+    return this.httpClient.post<string>('http://localhost:8086/advertisement', advertisement,
       {headers: {userId}});
   }
 
