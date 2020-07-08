@@ -142,7 +142,7 @@ export class StatisticsComponent implements OnInit {
         this.statisticService.getKmageOfCar(car.id).subscribe(kmageStat => {
           //  car.kmage = kmage;
           console.log(kmageStat);
-          this.kmageStat = kmageStat;
+          // this.kmageStat = kmageStat;
          /* this.statisticService.getRating(car.id).subscribe(ratingStat => {
             console.log(ratingStat);
             this.ratingStat = ratingStat;*/
@@ -173,8 +173,7 @@ export class StatisticsComponent implements OnInit {
 
       }
 
-    for (const ratingStat of this.ratingStat) {
-
+   /* for (const ratingStat of this.ratingStat) {
 
       this.carsForStatistics = [
         ...this.carsForStatistics,
@@ -185,7 +184,7 @@ export class StatisticsComponent implements OnInit {
         }
       ];
 
-    }
+    }*/
 
     }
   }
