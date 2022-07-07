@@ -31,7 +31,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "jqwidgets-ng": "^9.1.6",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "ng-starrating": "^1.0.20",
     "ngx-bootstrap": "^5.6.1",
     "rxjs": "~6.4.0",
